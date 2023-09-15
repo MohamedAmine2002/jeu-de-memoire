@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            img{
+                width: 12%;
+            }
+        </style>
+        <script>
+            const cardset=["babar.jpg","batman.jpg","blanche neige.jpg","cendrillon.jpg","conan.jpg","popeye.jpg","simba.jpg","the smurfs.jpg"];
+            const cards=[];
+
+            numtir=0;
+            numcard1=0;
+            numcard2=0;
+            function init() {
+                for (let i = 0; i < cardset.length*2; i++) {
+                    let x= Math.floor(Math.random() * 8);
+                    let occ=occurence(cards,cardset[x]);
+                    if (occ<2){
+                        cards[i]=cardset[x];
+                        occ++;
+                    }
+                    else {
+                        i--; // Répéter l'itération pour trouver un autre élément
+                    }
+                }
+
+            }
+            function occurence(tab,element){
+                let count = 0;
+                for (let i = 0; i < tab.length; i++) {
+                    if (tab[i] === element) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            function swipe(){
+                document.getElementById(event.target.id).src=cards[event.target.id] ; //event.target.id hiya el id te3 el 7aja eli nzelt 3liha 
+                numtir++;
+                if (numtir==1){
+                    numcard1=event.target.id;
+                }
+                if (numtir==2){
+                    numcard2=event.target.id;
+                    if(cards[numcard1]!=cards[numcard2]){
+                        // document.getElementById(numcard1).src="fond.jpg" ;
+                        // document.getElementById(numcard2).src="fond.jpg" ;
+                        // numtir=0 ; #cette methode matmakenech bech ncoufout lcarte kifech tet9leb wtarja3 acaus du rappidité du pc
+                        setTimeout(reset,1000);    
+                    }
+                    else{
+                        
+                        numtir=0 ;
+                    }
+
+                }
+            function reset() {
+                document.getElementById(numcard1).src="fond.jpg" ;
+                document.getElementById(numcard2).src="fond.jpg" ;
+                numtir=0;
+            }
+                
+            }
+            init();
+        </script>
+    </head>
+<body>
+<!-- el id lezmou ykkon houwa tartib te3 les photos fel tableau -->
+<h2>BIENVENUE DANS NOTER JEU DE MEMOIRE</h2>
+<div>
+    <img id="0" onclick="swipe()" src="fond.jpg">
+    <img id="1"onclick="swipe()"src="fond.jpg">
+    <img id="2"onclick="swipe()"src="fond.jpg">
+    <img id="3"onclick="swipe()"src="fond.jpg">
+    <img id="4"onclick="swipe()"src="fond.jpg">
+    <img id="5"onclick="swipe()"src="fond.jpg">
+    <img id="6"onclick="swipe()"src="fond.jpg">
+    <img id="7"onclick="swipe()"src="fond.jpg">
+</div>
+
+<div>
+    <img id="8"onclick="swipe()"src="fond.jpg">
+    <img id="9"onclick="swipe()"src="fond.jpg">
+    <img id="10"onclick="swipe()"src="fond.jpg">
+    <img id="11"onclick="swipe()"src="fond.jpg">
+    <img id="12"onclick="swipe()"src="fond.jpg">
+    <img id="13"onclick="swipe()"src="fond.jpg">
+    <img id="14"onclick="swipe()"src="fond.jpg">
+    <img id="15"onclick="swipe()"src="fond.jpg">
+</div>
+
+</body>
+</html>
